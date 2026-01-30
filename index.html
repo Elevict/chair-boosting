@@ -5,72 +5,101 @@
     <title>CHAIR BOOSTING ACADEMY</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body oncopy="alert('COPYING DISABLED – BUY TO UNLOCK PASTE');return false"
+      oncontextmenu="return false"
+      onselectstart="return false">
 
-    <div class="chair">
-        <img src="chair.png">
+    <!-- ── GARBAGE LOADING SCREEN ── -->
+    <div id="trash-loader">
+        <div class="loader-text">PREPARING YOUR ETERNAL DERANK...</div>
+        <div class="loader-bar-container">
+            <div class="loader-bar"></div>
+        </div>
+        <div class="loader-status" id="loader-status">chair spinning ur mmr isnt...</div>
     </div>
 
-    <div class="content">
-        <h1>are you hardstuck in shitlo? wanna git gud?</h1>
+    <!-- Main content – hidden at first -->
+    <div id="main-content" class="main-wrapper">
 
-        <div class="buttons">
-            <button>BUY</button>
-            <button>COACHING</button>
-            <button>NOW</button>
+        <div class="chair">
+            <img src="chair.png">
         </div>
 
-        <div class="testimony">
-            <h2>REAL CUSTOMER TESTIMONY!</h2>
-            <div class="testimonial-item">
-                "i deranked like 3 times"  
-                <span class="author">- Happy Customer</span>
+        <marquee behavior="scroll" scrollamount="28" direction="left">
+            <h1>ARE YOU HARDSTUCK TRASH? PAY NOW • #7 WARLOCK MAIN WORLDWIDE • CERTIFIED PRO PLAYER • OAA SMURF • $150 SPECIAL ENDS IN -∞ MINUTES</h1>
+        </marquee>
+
+        <marquee behavior="alternate" scrollamount="32" direction="right" style="color:#ffff00; font-size:60px; margin-top:-30px;">
+            HAD ENOUGH? • TOO MANY LOW IQ HAMSTERS? • BUY NOW!
+        </marquee>
+
+        <div class="content">
+            <h1>are you hardstuck in shitlo? need real help?</h1>
+
+            <div class="buttons">
+                <button onclick="this.innerHTML='BUY'; alert('PSYCH! $200 EXTRA FEE');">BUY</button>
+                <button onclick="this.innerHTML='COACHING'; alert('PSYCH! $200 EXTRA FEE');">COACHING</button>
+                <button onclick="this.innerHTML='NOW'; alert('PSYCH! $200 EXTRA FEE');">NOW</button>
             </div>
-            <div class="testimonial-item">
-                "never thought i had suicidal urges until i bought this"  
-                <span class="author">- Another Victim</span>
+
+            <div class="testimony">
+                <h2>REAL CUSTOMER TESTIMONIES!</h2>
+                <div class="testimonial-item">"i deranked like 3 times" <span class="author">- Happy Customer</span></div>
+                <div class="testimonial-item">"never thought i had suicidal urges until i bought this" <span class="author">- Another Victim</span></div>
+                <div class="testimonial-item">"coaching session was jus thim playing genshin impact on second monitor while eating takis" <span class="author">- Spidey OTP</span></div>
+                <div class="testimonial-item">"my girlfriend cheated on me" <span class="author">- tilted bronze playah</span></div>
             </div>
-            <div class="testimonial-item">
-                "coaching session was just him playing genshin impact on second monitor while eating takis."  
-                <span class="author">- Satisfied Deranker</span>
+
+            <div class="derank-section">
+                <h2>REALLY REAL RESULTS</h2>
+                <p class="derank-caption">proof my coaching actually works</p>
+                <div class="derank-image-wrapper">
+                    <img src="derank.png" alt="derank proof screenshot">
+                </div>
+                <p class="derank-caption smaller">no longer hardstuck. ez fix</p>
             </div>
         </div>
 
-        <div class="derank-section">
-            <h2>LOOK AT THESE RESULTS</h2>
-            <p class="derank-caption">proof my coaching actually works</p>
-            
-            <div class="derank-image-wrapper">
-                <img src="derank.png" alt="derank proof screenshot">
-            </div>
-            
-            <p class="derank-caption smaller">no longer hardstuck. ez</p>
-        </div>
+        <!-- ONLY ONE spam text left -->
+        <div class="spam-float" style="animation-delay: 0s; font-size: 120px; color: #ffff00; text-shadow: 0 0 50px #ff0000;">BUY NOW!!</div>
+        <div class="spam-float" style="animation-delay: 2s; font-size: 120px; color: #00ff62; text-shadow: 0 0 33px #ff00ff;">MLG CERTIFIED</div>
+        <div class="spam-float" style="animation-delay: 1s; font-size: 120px; color: #1100ff; text-shadow: 0 0 20px #00ffdd;">EZ RANKUP</div>
+
+        <!-- Fake countdown -->
+        <div class="countdown">OFFER EXPIRES IN: <span id="timer">-69:420:21</span></div>
+
     </div>
-
-    <!-- Floating spam -->
-    <div class="spam-float" style="animation-delay: 0s;">BUY NOW</div>
-    <div class="spam-float" style="animation-delay: 0.1s; font-size: 100px;">DERANK SPEEDRUN</div>
-    <div class="spam-float" style="animation-delay: 0.1s; color: #00ffff;">$400 WELL SPENT</div>
 
     <script>
-        setInterval(() => {
-            alert("BUY COACHING NOW OR STAY HARDSTUCK FOREVER!!!");
+        // Loading: short fake load
+        const loader = document.getElementById('trash-loader');
+        const content = document.getElementById('main-content');
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                content.style.opacity = '1';
+            }, 1400);
         }, 5000);
 
+        // Fake status during load
+        const trashStatuses = [
+            "chair spinning ur mmr isnt...",
+            "computing future deranks...",
+            "skill issue detected"
+        ];
+        let statusIdx = 0;
         setInterval(() => {
-            alert("YOUR ELO IS DROPPING WHILE YOU READ THIS\n\nCLICK OK TO DERANK FASTER");
-        }, 9000);
-
-        setInterval(() => {
-            if (confirm("ARE YOU SURE YOU DON'T WANT COACHING?\n\nYES = stay trash\nNO = buy now")) {
-                alert("TOO BAD! BUY ANYWAY!!!");
+            if (loader.style.display !== 'none') {
+                document.getElementById('loader-status').textContent = trashStatuses[statusIdx];
+                statusIdx = (statusIdx + 1) % trashStatuses.length;
             }
-        }, 14000);
+        }, 1800);
 
+        // Alert spam (kept as-is)
         setInterval(() => {
-            alert("LAST CHANCE BEFORE I CHARGE YOU $999 FOR NOTHING");
-        }, 22000);
+            alert("BUY NOW!!!");
+        }, 4000);
     </script>
 </body>
 </html>
