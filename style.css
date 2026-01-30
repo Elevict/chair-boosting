@@ -12,11 +12,11 @@ body {
     position: fixed;
     left: -5%;
     top: 10%;
-    width: 40%;
+    width: 10%;
     height: auto;
     animation: spin 0.7s linear infinite;
     z-index: 5;
-    opacity: 0.75;
+    opacity: 0;
     filter: brightness(1.4) contrast(1.8) hue-rotate(45deg);
     pointer-events: none;
 }
@@ -27,7 +27,7 @@ body {
 }
 
 .chair img {
-    width: 140%;
+    width: 100%;
     height: auto;
 }
 
@@ -163,4 +163,238 @@ h1 {
     50%  { top: 70%; left: 70%; }
     75%  { top: 50%; left: 40%; }
     100% { top: 10%; left: 60%; }
+}
+
+#trash-loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ff00ff;
+    text-shadow: 0 0 30px #f0f;
+    transition: opacity 1.4s ease-out;
+}
+
+.loader-text {
+    font-size: 80px;
+    color: #ffff00;
+    margin-bottom: 50px;
+    animation: rainbowGarbage 1.2s steps(4) infinite;
+    text-align: center;
+    max-width: 90%;
+}
+
+.loader-bar-container {
+    width: 80%;
+    max-width: 1000px;
+    height: 90px;
+    background: #111;
+    border: 20px double #f00;
+    box-shadow: 0 0 70px #f00, inset 0 0 50px #000;
+    overflow: hidden;
+}
+
+.loader-bar {
+    width: 28%;
+    height: 100%;
+    background: linear-gradient(90deg, #f00, #ff0, #0f0, #00ffff, #f0f, #f00);
+    background-size: 800% 100%;
+    animation: 
+        loaderBounce 4.2s ease-in-out infinite alternate,
+        gradientMove 2.5s linear infinite;
+}
+
+.loader-status {
+    margin-top: 50px;
+    font-size: 50px;
+    color: #00ffff;
+    text-shadow: 0 0 40px #0ff;
+    animation: blink 0.6s infinite alternate;
+    text-align: center;
+    max-width: 90%;
+}
+
+.main-wrapper {
+    opacity: 0;
+    transition: opacity 1.8s ease-in;
+}
+
+/* Loading bar animations */
+@keyframes loaderBounce {
+    0%   { left: 0%; width: 28%; }
+    50%  { left: 72%; width: 38%; }
+    100% { left: 0%; width: 28%; }
+}
+
+@keyframes gradientMove {
+    0%   { background-position: 0%  }
+    100% { background-position: 800% }
+}
+
+@keyframes rainbowGarbage {
+    0%   { color: #f00 }
+    25%  { color: #ff0 }
+    50%  { color: #0f0 }
+    75%  { color: #00f }
+    100% { color: #f00 }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.3; }
+}
+
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ────────────────────────────────────── */
+/* Your original styles + heavy upgrades  */
+/* ────────────────────────────────────── */
+
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 120vh;
+}
+
+/* Chair – more cursed */
+.chair {
+    position: fixed;
+    left: -8%;
+    top: 8%;
+    width: 45%;
+    height: auto;
+    animation: spin 0.55s linear infinite, hue-rotate 3s linear infinite;
+    z-index: 5;
+    opacity: 0.82;
+    filter: brightness(1.6) contrast(2.2) saturate(3);
+    pointer-events: none;
+}
+
+/* Content – more aggressive */
+.content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 80px auto 140px auto;
+    padding: 70px 60px;
+    text-align: center;
+    background: rgba(5, 0, 15, 0.75);
+    border: 22px double #ff00ff;
+    box-shadow:
+        inset 0 0 80px #f0f,
+        0 0 100px #f0f,
+        0 0 160px #f00,
+        inset 0 0 40px #000;
+    animation: content-pulse 1.4s infinite alternate, tilt 8s infinite;
+}
+
+/* Bigger, meaner title */
+h1 {
+    font-size: 90px;
+    color: #ff00ff;
+    text-shadow: 0 0 40px #f0f, 0 0 80px #f00, 12px 12px 0 #000, -12px -12px 0 #0f0;
+    margin-bottom: 70px;
+    animation: shake 1.2s infinite, blink-text 0.25s infinite, hue-rotate 5s infinite;
+}
+
+/* Buttons – betrayal ready */
+.buttons button {
+    display: block;
+    margin: 50px auto;
+    padding: 50px 120px;
+    font-size: 80px;
+    font-weight: bold;
+    color: #000;
+    background-color: #f00;
+    border: 16px solid #0f0;
+    box-shadow: 0 0 60px #0f0, inset 0 0 30px #f00;
+    animation: rainbow-flash 0.25s steps(1) infinite, pulse-scale 0.8s infinite;
+    transition: all 0.3s;
+}
+
+.buttons button:hover {
+    transform: scale(1.15) rotate(5deg);
+    background: #0f0;
+    border-color: #f00;
+}
+
+/* Testimonies & derank – thicker & shakier */
+.testimonial-item, .derank-section {
+    margin: 50px 0;
+    padding: 50px;
+    border: 14px dashed #ffff00;
+    background: #0a0015;
+    box-shadow: 0 0 50px #ff0;
+    animation: shake 2.5s infinite, border-blink 0.4s infinite;
+}
+
+.derank-image-wrapper {
+    border: 22px solid #f00;
+    animation: pulse-scale 0.8s infinite alternate, hue-rotate 4s infinite;
+}
+
+/* Floating spam – more of them, crazier */
+.spam-float {
+    position: fixed;
+    font-size: 100px;
+    color: #ff0000;
+    text-shadow: 0 0 60px #f00;
+    pointer-events: none;
+    z-index: 10;
+    animation: float-around 10s infinite linear, blink 0.18s infinite;
+}
+
+/* Fake viewers & countdown */
+.fake-viewers {
+    font-size: 70px;
+    color: #ff0000;
+    text-align: center;
+    margin: 40px 0;
+    animation: blink 0.4s infinite;
+}
+
+.countdown {
+    font-size: 80px;
+    color: #ffff00;
+    text-align: center;
+    margin: 60px 0;
+    animation: blink 0.3s infinite;
+}
+
+/* Loader upgrades – faster & meaner */
+.loader-text {
+    font-size: 100px;
+    animation: rainbowGarbage 0.8s steps(4) infinite;
+}
+
+.loader-bar {
+    animation:
+        loaderBounce 2.8s ease-in-out infinite alternate,
+        gradientMove 1.8s linear infinite;
+}
+
+/* Extra keyframes for chaos */
+@keyframes tilt {
+    0%,100% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    75% { transform: rotate(-2deg); }
+}
+
+@keyframes hue-rotate {
+    from { filter: hue-rotate(0deg); }
+    to   { filter: hue-rotate(360deg); }
 }
