@@ -1,0 +1,166 @@
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Default cursor restored – no more cursed X */
+}
+
+.chair {
+    position: fixed;
+    left: -5%;
+    top: 10%;
+    width: 40%;
+    height: auto;
+    animation: spin 0.7s linear infinite;
+    z-index: 5;
+    opacity: 0.75;
+    filter: brightness(1.4) contrast(1.8) hue-rotate(45deg);
+    pointer-events: none;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.chair img {
+    width: 140%;
+    height: auto;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    max-width: 1100px;              /* bigger overall */
+    margin: 60px auto 120px auto;     /* smaller right margin → more centered feel */
+    padding: 60px 50px;
+    text-align: center;
+    background: rgba(10, 0, 20, 0.7);
+    border: 15px double #ff00ff;
+    border-radius: 0;
+    box-shadow: 
+        inset 0 0 60px #f0f,
+        0 0 80px #f0f,
+        0 0 120px #f00;
+    animation: content-pulse 2s infinite alternate;
+}
+
+@keyframes content-pulse {
+    0%   { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+h1 {
+    font-size: 70px;
+    color: #ff00ff;
+    text-shadow: 0 0 30px #f0f, 0 0 60px #f00, 8px 8px 0 #000;
+    margin-bottom: 60px;
+    animation: shake 2s infinite, blink-text 0.4s infinite;
+}
+
+@keyframes blink-text {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+}
+
+.buttons {
+    margin: 60px 0;
+}
+
+.buttons button {
+    display: block;
+    margin: 40px auto;
+    padding: 40px 100px;
+    font-size: 70px;
+    font-weight: bold;
+    color: #000;
+    background-color: #f00;
+    border: 12px solid #0f0;
+    border-radius: 0;
+    cursor: pointer;                /* normal clickable cursor */
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    box-shadow: 0 0 40px #0f0;
+    animation: rainbow-flash 0.4s steps(1) infinite, pulse-scale 1.2s infinite;
+}
+
+@keyframes rainbow-flash {
+    0%    { background-color: #f00; border-color: #0f0; }
+    20%   { background-color: #ff0; border-color: #00f; }
+    40%   { background-color: #0f0; border-color: #f0f; }
+    60%   { background-color: #00f; border-color: #ff0; }
+    80%   { background-color: #f0f; border-color: #0f0; }
+    100%  { background-color: #f00; border-color: #0f0; }
+}
+
+@keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.15); }
+}
+
+.testimony, .derank-section {
+    margin-top: 80px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 10px solid #ff00ff;
+    animation: border-blink 0.6s infinite;
+}
+
+@keyframes border-blink {
+    0%, 100% { border-color: #ff00ff; }
+    50%      { border-color: #00ffff; }
+}
+
+.testimony h2, .derank-section h2 {
+    font-size: 55px;
+    color: #00ffff;
+    text-shadow: 0 0 20px #0ff;
+    animation: blink 0.5s infinite;
+}
+
+.testimonial-item {
+    background: #110022;
+    border: 8px dashed #ffff00;
+    padding: 35px;
+    margin: 40px 0;
+    font-size: 38px;
+    color: #ffff00;
+    box-shadow: 0 0 30px #ff0;
+    animation: shake 4s infinite;
+}
+
+.derank-image-wrapper {
+    border: 15px solid #f00;
+    background: #000;
+    padding: 15px;
+    box-shadow: 0 0 50px #f00;
+    animation: pulse-scale 1.5s infinite;
+}
+
+.derank-caption {
+    font-size: 40px;
+    color: #ff00ff;
+    animation: blink 0.7s infinite;
+}
+
+/* Floating spam text */
+.spam-float {
+    position: fixed;
+    font-size: 80px;
+    color: #ff0000;
+    text-shadow: 0 0 40px #f00;
+    pointer-events: none;
+    z-index: 10;
+    animation: float-around 15s infinite linear, blink 0.3s infinite;
+}
+
+@keyframes float-around {
+    0%   { top: 10%; left: 60%; }
+    25%  { top: 30%; left: 80%; }
+    50%  { top: 70%; left: 70%; }
+    75%  { top: 50%; left: 40%; }
+    100% { top: 10%; left: 60%; }
+}
